@@ -1,16 +1,13 @@
 # flutter_weather_api_app
 
-A new Flutter project.
+Inspiration from this video [Weather App UI Design in Figma](https://www.youtube.com/watch?v=48YwaTiYau0)
+Free Figma design [Weather-App-UI-Design](https://www.figma.com/design/YZeO3qRI4BVIl3fVXKcOx5/Weather-App-UI-Design-(Community)?node-id=50-1648&node-type=frame&t=nhhNYieFpzjrOXlt-0)
 
-## Getting Started
+![screenshot]()
 
-This project is a starting point for a Flutter application.
+### Free weather API:
+- [ ] [OpenWeather](https://openweathermap.org/api)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Packages used in project:
+- [ ]
+- [ ]
