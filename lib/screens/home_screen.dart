@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               onTap: () {
                                 isForecastVisible != isForecastVisible;
                               },
-                              child: Image(
+                              child: const Image(
                                   height: 5,
                                   width: 48,
                                   image: AssetImage('assets/images/shape.png')),
@@ -202,10 +202,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
-                      WeatherForecastWidget()
+                      const WeatherForecastWidget()
                     ],
                   ),
                 ),

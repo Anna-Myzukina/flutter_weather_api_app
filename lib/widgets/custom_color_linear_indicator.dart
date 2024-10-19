@@ -1,9 +1,10 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Color Picker Demo"),
+          title: const Text("Color Picker Demo"),
         ),
-        body: SafeArea(
+        body: const SafeArea(
           child: ColorPicker(300),
         ),
       ),
@@ -39,25 +40,26 @@ class _SliderIndicatorPainter extends CustomPainter {
 
 class ColorPicker extends StatefulWidget {
   final double width;
-  ColorPicker(this.width);
+  const ColorPicker(this.width, {super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _ColorPickerState createState() => _ColorPickerState();
 }
 class _ColorPickerState extends State<ColorPicker> {
   final List<Color> _colors = [
-    Color.fromARGB(255, 255, 0, 0),
-    Color.fromARGB(255, 255, 128, 0),
-    Color.fromARGB(255, 255, 255, 0),
-    Color.fromARGB(255, 128, 255, 0),
-    Color.fromARGB(255, 0, 255, 0),
-    Color.fromARGB(255, 0, 255, 128),
-    Color.fromARGB(255, 0, 255, 255),
-    Color.fromARGB(255, 0, 128, 255),
-    Color.fromARGB(255, 0, 0, 255),
-    Color.fromARGB(255, 127, 0, 255),
-    Color.fromARGB(255, 255, 0, 255),
-    Color.fromARGB(255, 255, 0, 127),
-    Color.fromARGB(255, 128, 128, 128),
+    const Color.fromARGB(255, 255, 0, 0),
+    const Color.fromARGB(255, 255, 128, 0),
+    const Color.fromARGB(255, 255, 255, 0),
+    const Color.fromARGB(255, 128, 255, 0),
+    const Color.fromARGB(255, 0, 255, 0),
+    const Color.fromARGB(255, 0, 255, 128),
+    const Color.fromARGB(255, 0, 255, 255),
+    const Color.fromARGB(255, 0, 128, 255),
+    const Color.fromARGB(255, 0, 0, 255),
+    const Color.fromARGB(255, 127, 0, 255),
+    const Color.fromARGB(255, 255, 0, 255),
+    const Color.fromARGB(255, 255, 0, 127),
+    const Color.fromARGB(255, 128, 128, 128),
   ];
 double _colorSliderPosition = 0;
   late double _shadeSliderPosition;
@@ -78,7 +80,7 @@ _colorChangeHandler(double position) {
     if (position < 0) {
       position = 0;
     }
-    print("New pos: $position");
+    // print("New pos: $position");
 setState(() {
       _colorSliderPosition = position;
       _currentColor = _calculateSelectedColor(_colorSliderPosition);
@@ -92,8 +94,8 @@ _shadeChangeHandler(double position) {
     setState(() {
       _shadeSliderPosition = position;
       _shadedColor = _calculateShadedColor(_shadeSliderPosition);
-      print(
-          "r: ${_shadedColor.red}, g: ${_shadedColor.green}, b: ${_shadedColor.blue}");
+      // print(
+      //     "r: ${_shadedColor.red}, g: ${_shadedColor.green}, b: ${_shadedColor.blue}");
     });
   }
 Color _calculateShadedColor(double position) {
@@ -137,9 +139,9 @@ Color _calculateSelectedColor(double position) {
     //determine color
     double positionInColorArray =
         (position / widget.width * (_colors.length - 1));
-    print(positionInColorArray);
+    //print(positionInColorArray);
     int index = positionInColorArray.truncate();
-    print(index);
+    //print(index);
     double remainder = positionInColorArray - index;
 if (remainder == 0.0) {
       _currentColor = _colors[index];
@@ -172,7 +174,6 @@ if (remainder == 0.0) {
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onHorizontalDragStart: (DragStartDetails details) {
-              print("_-------------------------STARTED DRAG");
               _colorChangeHandler(details.localPosition.dx);
             },
             onHorizontalDragUpdate: (DragUpdateDetails details) {
@@ -184,7 +185,7 @@ if (remainder == 0.0) {
             //This outside padding makes it much easier to grab the   slider because the gesture detector has
             // the extra padding to recognize gestures inside of
             child: Padding(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               child: Container(
                 width: widget.width,
                 height: 15,
@@ -205,7 +206,7 @@ if (remainder == 0.0) {
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onHorizontalDragStart: (DragStartDetails details) {
-              print("_-------------------------STARTED DRAG");
+              //print("_-------------------------STARTED DRAG");
               _shadeChangeHandler(details.localPosition.dx);
             },
             onHorizontalDragUpdate: (DragUpdateDetails details) {
@@ -217,7 +218,7 @@ if (remainder == 0.0) {
             //This outside padding makes it much easier to grab the slider because the gesture detector has
             // the extra padding to recognize gestures inside of
             child: Padding(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               child: Container(
                 width: widget.width,
                 height: 15,
