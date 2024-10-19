@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_weather_api_app/firebase/firebase_options.dart';
 import 'package:flutter_weather_api_app/utils/bootstrap.dart';
 
@@ -13,7 +14,7 @@ void main() async {
     //print('Unable to initialze Firebase');
     runApp(const MyApp());
   }
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
