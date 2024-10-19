@@ -1,10 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_api_app/models/weather_model.dart';
+import 'package:flutter_weather_api_app/screens/profile_screen.dart';
 
 import 'package:flutter_weather_api_app/src/constants.dart' as constant;
 import 'package:flutter_weather_api_app/widgets/custom_bottom_navigation_bar.dart';
 import 'package:flutter_weather_api_app/widgets/multi_colour_circular_indicator/custom_bottomsheet.dart';
-import 'package:flutter_weather_api_app/widgets/weather_forecast_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,6 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final DraggableScrollableController sheetController =
       DraggableScrollableController();
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   void initState() {
     super.initState();
@@ -41,10 +44,35 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.transparent,
       extendBody: true,
       extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: InkWell(
+            onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const ProfileScreen()));
+              },
+            child: const Icon(
+              Icons.verified_user_rounded,
+              color: Colors.white,
+            ),
+          ),
+        actions: [
+          InkWell(
+            onTap: () {
+              _auth.signOut();
+              
+            },
+            child: const Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+          )
+        ],
+      ),
       body: Stack(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height,
+            //height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/background.png'),
@@ -205,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 8,
                       ),
-                      const WeatherForecastWidget()
+                      //const WeatherForecastWidget()
                     ],
                   ),
                 ),
